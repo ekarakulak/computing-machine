@@ -1,0 +1,70 @@
+while (1)
+  {
+		
+		for(k=1;k<100;k++)
+		{
+			ecg=(-ap/2*cos((2*pi*k+15)/100)+ap/2); //*1000
+			HAL_Delay(1); //9
+		}
+		
+		for (k=1;k<60;k++)
+    {
+      ecg=0;
+			HAL_Delay(1); //10
+		}
+		
+		for (k=1;k<20;k++)
+    {
+				ecg=-aq*k/20; //%q1 isareti 0-20
+        HAL_Delay(1); //4
+		}
+		
+		for (k=1;k<20;k++)
+    {
+        ecg=(aq*k/20-aq); //%q2 isareti 0-20 *1000
+        HAL_Delay(1); //
+		}
+		
+		for (k=1;k<70;k++)
+    {
+				ecg=ar*sin(pi*k/70); //%r isareti 70 *1000
+        HAL_Delay(1); //2
+		}
+		
+		for (k=1;k<30;k++)
+    {
+        ecg=(-as*k/30);  //%s1 isareti 0-50 *1000
+        HAL_Delay(1); //4
+		}
+
+		for (k=1;k<30;k++)
+    {
+        ecg=as*k/25-as;  //%s2 isareti 0-50
+        HAL_Delay(1); //6
+		}
+		s2=ecg;
+		for (k=1;k<100;k++)
+    {
+        ecg=-s2*k/100+s2; //st interval *1
+        HAL_Delay(1); //8
+		}
+		s2=ecg;
+			for (k=1;k<120;k++)
+    {
+        ecg=(-at*cos((1.48*pi*k+15)/120)+at); //t wave *800
+        HAL_Delay(1); //8
+		}
+		s2=ecg;
+			for (k=1;k<100;k++)
+    {
+        ecg=s2*9/(k+10);
+        HAL_Delay(1); //8
+		}
+		s2=ecg;
+			for (k=1;k<100;k++)
+    {
+        ecg=s2;
+        HAL_Delay(1); //8
+		}
+		
+HAL_Delay(100);
